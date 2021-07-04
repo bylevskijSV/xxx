@@ -1,0 +1,28 @@
+<% @pizzas.each do |pizza| %>
+  <% if pizza.popularity == 4 %>
+  <div class="pizza_row_item <%= pizza.photo %>">
+    <figure class="pizza_row_item_photo">
+        <%= image_tag("#{pizza.photo}.png", class: "image") %>
+    </figure>
+    <div class="pizza_row_item_sub">
+        <h1><%= pizza.name %></h1>
+        <p>от <%= pizza.price %> руб.</p>
+    </div>
+
+    <div class="pizza_row_item_hovered_<%= pizza.photo %>">
+        <div>
+            <figure class="pizza_row_item_photo">
+                <%= image_tag "#{pizza.photo}.jpg", class: "photo_exp" %>
+            </figure>
+        </div>
+        <div class="pizza_row_item_hovered_content">
+            <h1><%= pizza.name %></h1>
+            <p>(<%= pizza.ingredients %>)</p>
+            <h3><%= pizza.price %> руб, <%= pizza.weight %>г.</h3>
+            <button @click="addMargarita">В корзину</button>
+        </div>
+    </div>
+
+  </div>
+  <% end %>
+<% end %>

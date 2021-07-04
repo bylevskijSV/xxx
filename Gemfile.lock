@@ -82,6 +82,7 @@ GEM
     ffi (1.15.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    httpclient (2.8.3)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -168,6 +169,10 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    telegram-bot (0.15.4)
+      actionpack (>= 4.0, < 6.2)
+      activesupport (>= 4.0, < 6.2)
+      httpclient (~> 2.7)
     thor (1.1.0)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -212,6 +217,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   spring
+  telegram-bot
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
