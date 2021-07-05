@@ -32,7 +32,11 @@
                     <h1><%= pizza.name %></h1>
                     <p>(<%= pizza.ingredients %>)</p>
                     <h3><%= pizza.price %> руб, <%= pizza.weight %>г.</h3>
-                    <button @click="addMargarita">В корзину</button>
+                    <% if @cart.include?(pizza) %>
+                      <%= button_to 'remove from cart', remove_from_cart_path(pizza), method: :delete %>
+                    <% else %>  
+                      <%= button_to 'Добавить в корзину', add_to_cart_path(pizza.id), method: :post %>
+                    <% end %>
                 </div>
             </div>
           </div>

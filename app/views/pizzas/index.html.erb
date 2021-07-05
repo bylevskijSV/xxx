@@ -1,0 +1,19 @@
+<section>
+
+  <div class="menu-headline">
+      <%= pluralize @visit_count, 'time' %>
+      <p>Попробуйте неповторимый вкус пиццы на дровах!</p>
+      <details>
+        <summary>Корзина</summary>
+        <ul>
+          <% @cart.each do |pizza| %>
+            <li><%= pizza.name %></li>
+          <% end %>
+        </ul>
+      </details>
+  </div>
+
+      <%= render 'pizza' %>  
+
+  <div class="lineshort"></div>
+</section>
