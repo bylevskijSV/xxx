@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   delete '/pizzas/remove_from_cart/:id', to: 'pizzas#remove_from_cart', as: 'remove_from_cart'
   
   root 'pizzas#index'
+  get 'delivery', to: 'pizzas#delivery'
 end

@@ -20,6 +20,10 @@ class PizzasController < ApplicationController
     redirect_to root_path
   end
 
+  def delivery
+    
+  end
+
   private
   # Initializa the visin on first visit
   def initialize_session

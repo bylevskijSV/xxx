@@ -9,7 +9,7 @@
   <div class="line<%= iter%2 == 0 ? "" : "two" %>"></div>
   
   <div class="pizzas">
-    <div class="pizza_row<%= (iter == row_count) && !all_full_row ? "_two" : ''%>">
+    <div class="pizza_row<%= (iter == row_count) && !all_full_row ? "_two" : ""%>">
  
       <% @pizzas.each do |pizza| %>
         <% if pizza.popularity == iter %>
