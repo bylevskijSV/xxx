@@ -24,8 +24,8 @@
 
           <div class="header_nav_links">
               <div class="header_nav_links_container">
-                  <a class="header_nav_link active" href="#">Меню</a>
-                  <a class="header_nav_link" href="../delivery/delivery.html">Доставка</a>
+                  <%= link_to 'Меню', root_path, class:'header_nav_link active'%>
+                  <%= link_to 'Доставка', delivery_path, class:'header_nav_link'%>
                   <svg class="header_nav_link" id="regular" enable-background="new 0 0 24 24" height="36px"
                       viewBox="0 0 24 24" width="36px" xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -57,8 +57,8 @@
                       </svg>
                   </div>
                   
-                      <div class="header_delivery_price">
-                          <p>Корзина: 0 руб</p>
+                      <div class="header_delivery_price cart">
+                          <%= render 'layouts/cart' %>
                       </div>
                   
               </div>

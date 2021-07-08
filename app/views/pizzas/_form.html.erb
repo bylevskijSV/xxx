@@ -1,0 +1,54 @@
+<%= form_with(model: @pizza, local: true) do |f| %>
+  <div>
+    <%= f.label :name%>
+    <div>
+      <%= f.text_field :name, placeholder: "Введите название пиццы" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :price%>
+    <div>
+      <%= f.text_field :price, placeholder: "Введите цену пиццы" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :ingredients%>
+    <div>
+      <%= f.text_field :ingredients, placeholder: "Введите ингредиенты" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :description%>
+    <div>
+      <%= f.text_field :description, placeholder: "Введите описание" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :weight%>
+    <div>
+      <%= f.text_field :weight, placeholder: "Введите вес" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :photo%>
+    <div>
+      <%= f.text_field :photo, placeholder: "Введите название фото" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :popularity%>
+    <div>
+      <%= f.number_field :popularity, placeholder: "Введите коэф. популярности" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.submit(@pizza.new_record? ? "Создать пиццу" : "обновить пиццу") %>
+  </div>
+<% end %>
