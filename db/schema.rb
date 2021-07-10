@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 2021_07_06_200357) do
     t.string "description"
     t.float "weight"
     t.string "photo"
+    t.integer "popularity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "popularity"
   end
 
 end
