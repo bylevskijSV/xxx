@@ -32,14 +32,13 @@
                     <h1><%= pizza.name %></h1>
                     <p>(<%= pizza.ingredients %>)</p>
                     <h3><%= pizza.price %> руб, <%= pizza.weight %>г.</h3>
-                    <% if false %>
+                    <% if OrderItem.where(order_id: @order_id, pizza_id: pizza.id).one? %>
                       Пицца в корзине!
                     <% else %>
                       <%= form_for(@order_item, remote: true) do |f| %>
                         <%= f.hidden_field :pizza_id, value: pizza.id %>
                         <%= f.number_field :quantity, value: 1, min: 1%>
                         <%= f.submit "Добавить в корзину", class: 'submit_btn' %>
-
                       <% end %>
                     <% end %>
                     <%# , add_to_cart_path(pizza.id), method: :post %>
