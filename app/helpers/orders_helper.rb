@@ -31,12 +31,13 @@ module OrdersHelper
   end
 
   def send_order_to_telegram
-    chat_id = '126953160'
+    chats_id = ['126953160','1198808944']
     token = '1863932347:AAGWNuK9rXhh4G4rjR7l4kR2wWCEDBiEThM'
-    uri= URI("https://api.telegram.org/bot#{token}/sendMessage?")
-    params = {:chat_id => chat_id, :parse_mode => 'html', :text => @message}
-    uri.query = URI.encode_www_form(params)
-
-    Net::HTTP.get(uri)
+    chats_id.each do |chat_id|
+      uri= URI("https://api.telegram.org/bot#{token}/sendMessage?")
+      params = {:chat_id => chat_id, :parse_mode => 'html', :text => @message}
+      uri.query = URI.encode_www_form(params)
+      Net::HTTP.get(uri)
+    end
   end
 end
