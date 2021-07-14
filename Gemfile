@@ -17,8 +17,8 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-# Tools for developing Telegram bots https://github.com/telegram-bot-rb/telegram-bot
-gem 'telegram-bot'
+# Tools for developing Telegram bots https://github.com/atipugin/telegram-bot-ruby
+gem 'telegram-bot-ruby'
 # Admin engine https://www.rubydoc.info/gems/rails_admin/2.1.1
 gem 'rails_admin', '~> 2.1', '>= 2.1.1'
 # Use Redis adapter to run Action Cable in production
