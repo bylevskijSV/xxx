@@ -10,7 +10,8 @@ module Xxx
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-
+    config.chats_id = %w[126953160 1198808944]
+    config.token = ENV['TELEGRAM_TOKEN']
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
