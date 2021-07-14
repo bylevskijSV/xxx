@@ -30,8 +30,8 @@ module OrdersHelper
   end
 
   def send_order_to_telegram
-    chats_id = ['126953160','1198808944']
-    token = '1863932347:AAGWNuK9rXhh4G4rjR7l4kR2wWCEDBiEThM'
+    chats_id = Rails.configuration.chats_id
+    token = Rails.configuration.token
     chats_id.each do |chat_id|
       uri= URI("https://api.telegram.org/bot#{token}/sendMessage?")
       params = {:chat_id => chat_id, :parse_mode => 'html', :text => @message}

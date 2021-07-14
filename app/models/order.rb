@@ -15,7 +15,7 @@ class Order < ApplicationRecord
         order_item_info << "#{item.pizza.name}:#{item.quantity}\n"
       end
     else
-      order_item_info << " нету"
+      order_item_info << " баг"
     end
 
     return order_item_info
