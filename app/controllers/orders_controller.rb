@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  include OrdersHelper
+
   before_action :set_order, only: [:edit, :update]
   def edit
   end
@@ -7,6 +9,8 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       flash[:notice] = "Заказ успешно cформирован"
       set_confirmed_by
+      set_order_data_collection
+      send_order_to_telegram
       session[:order_id] = nil
       redirect_to root_path
     else
@@ -23,8 +27,4 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def set_confirmed_by
-    @order.confirmed_by = true
-    @order.save
-  end
 end
