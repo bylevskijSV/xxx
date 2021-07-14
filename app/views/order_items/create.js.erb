@@ -2,4 +2,5 @@
   alert('Invalid')
 <% else %>
   $(".cart").html("<%= escape_javascript(render 'layouts/cart') %>")
+  $(".pizza_row_item_button_id<%= @order_item.pizza_id %>").html("<p>Пицца в корзине!</p>")
 <% end %>
