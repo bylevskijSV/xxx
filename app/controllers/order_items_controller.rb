@@ -13,14 +13,14 @@ class OrderItemsController < ApplicationController
     # byebug
     @order_item = @order.order_items.find(params[:id])
     @order_item.update(order_item_params)
-    @order_items = @order.order_items
+    @order_items = @order.order_items.order(:created_at)
   end
 
   def destroy
     @order = current_order
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
-    @order_items = @order.order_items
+    @order_items = @order.order_items.order(:created_at)
   end
 
   private
