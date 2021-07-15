@@ -24,8 +24,16 @@
 
           <div class="header_nav_links">
               <div class="header_nav_links_container">
+                <% if current_page?('http://localhost:3000/') %>
                   <%= link_to 'Меню', root_path, class:'header_nav_link active'%>
                   <%= link_to 'Доставка', delivery_path, class:'header_nav_link'%>
+                <% elsif current_page?('/delivery') %>
+                  <%= link_to 'Меню', root_path, class:'header_nav_link '%>
+                  <%= link_to 'Доставка', delivery_path, class:'header_nav_link active'%>
+                <% else %>
+                  <%= link_to 'Меню', root_path, class:'header_nav_link'%>
+                  <%= link_to 'Доставка', delivery_path, class:'header_nav_link'%>
+                <% end %>
                   <svg class="header_nav_link" id="regular" enable-background="new 0 0 24 24" height="36px"
                       viewBox="0 0 24 24" width="36px" xmlns="http://www.w3.org/2000/svg">
                       <path
