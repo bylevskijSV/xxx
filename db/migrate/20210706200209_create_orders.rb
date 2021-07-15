@@ -12,7 +12,9 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.float   :total
       t.float   :tax
       t.float   :shipping
-
+      t.boolean :confirmed_by, default: false
+      t.boolean :closed, default: false
+      t.string  :order_to_string
       t.timestamps
     end
   end

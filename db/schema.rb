@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_14_190106) do
+ActiveRecord::Schema.define(version: 2021_07_06_200357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,22 +26,22 @@ ActiveRecord::Schema.define(version: 2021_07_14_190106) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.float "subtotal"
-    t.float "total"
     t.string "name"
     t.string "phone"
     t.string "street"
     t.integer "house_number"
     t.integer "subway_number"
-    t.integer "apartment_number"
+    t.integer "apartament_number"
     t.string "note"
+    t.float "subtotal"
+    t.float "total"
     t.float "tax"
     t.float "shipping"
+    t.boolean "confirmed_by"
+    t.boolean "closed"
+    t.string "order_to_string"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "confirmed_by", default: false
-    t.boolean "closed", default: false
-    t.string "order_to_string"
   end
 
   create_table "pizzas", force: :cascade do |t|
