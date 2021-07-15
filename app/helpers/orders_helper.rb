@@ -8,33 +8,35 @@ module OrdersHelper
   end
 
   def set_order_data_collection
-    @message = String.new("Информация о заказе: #{@order.id}\n")
-    @message << "-------------\n"
-    @message << "Имя: #{@order.name}\nТелефон: #{@order.phone}\n"
-    @message << "-------------\n"
-    @message << "Улица: #{@order.street}\n"
-    @message << "Номер дома: #{@order.house_number}\nНомер Подьезда:#{@order.subway_number}\n"
-    @message << "Номер квартиры:#{@order.apartment_number}\n"
+    message = String.new("Информация о заказе: #{@order.id}\n")
+    message << "-------------\n"
+    message << "Имя: #{@order.name}\nТелефон: #{@order.phone}\n"
+    message << "-------------\n"
+    message << "Улица: #{@order.street}\n"
+    message << "Номер дома: #{@order.house_number}\nНомер Подьезда:#{@order.subway_number}\n"
+    message << "Номер квартиры:#{@order.apartament_number}\n"
 
     if !@order.note.empty?
-      @message << "Примечание: #{@order.note}\n"
+      message << "Примечание: #{@order.note}\n"
     else
-      @message << "Примечания отсуствуют\n"
+      message << "Примечания отсуствуют\n"
     end
-    @message << "-------------\n"
+    message << "-------------\n"
 
-    @message << "#{current_order.order_to_string}"
-    @message << "-------------\n"
-    @message << "За всё: #{@order.total} BYN"
+    message << "#{current_order.order_to_string}"
+    message << "-------------\n"
+    message << "За всё: #{@order.total} BYN"
 
+    return message
   end
 
   def send_order_to_telegram
+    message = set_order_data_collection
     chats_id = Rails.configuration.chats_id
     token = Rails.configuration.token
     chats_id.each do |chat_id|
       uri= URI("https://api.telegram.org/bot#{token}/sendMessage?")
-      params = {:chat_id => chat_id, :parse_mode => 'html', :text => @message}
+      params = {:chat_id => chat_id, :parse_mode => 'html', :text => message}
       uri.query = URI.encode_www_form(params)
       Net::HTTP.get(uri)
     end
