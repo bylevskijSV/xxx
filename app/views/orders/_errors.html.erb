@@ -1,0 +1,8 @@
+<% if @order.errors.any? %>
+  <h4 class="alert-heading">Следующие ошибки не позволили сохранить заказ</h4>
+  <ul>
+    <% @order.errors.each do |attribute, msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<%end%>

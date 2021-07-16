@@ -33,11 +33,11 @@ module OrdersHelper
   def send_order_to_telegram
     message = set_order_data_collection
     byebug
-    chats_id = Rails.configuration.chats_id
+    chat_ids = Rails.configuration.chat_ids
     token = Rails.configuration.token
     # Если есть токен в переменной окружения отправить сообщение в телеграм-бот
     if token
-      chats_id.each do |chat_id|
+      chat_ids.each do |chat_id|
         uri= URI("https://api.telegram.org/bot#{token}/sendMessage?")
         params = {:chat_id => chat_id, :parse_mode => 'html', :text => message}
         uri.query = URI.encode_www_form(params)

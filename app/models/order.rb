@@ -2,25 +2,25 @@ class Order < ApplicationRecord
   has_many :order_items
   before_save :set_total
   before_save :set_order_string
-  
+
   #validate data
   validates :name, presence: true, format: { with: /[А-Яа-яЁё]/,
-    message: "Использовать можно только буквы" },
+    message: "Использовать можно только кириллицу в имени" },
     length: { in: 3..40,
       too_long: "Слишком много символов (максимальное количество: 40, ваше %{count}",
-      too_short: "Слишком мало символов, напишите полное имя"
+      too_short: "Слишком мало символов, напишите полное имя(минимальное: 3)"
     },
     on: :update
   validates :phone, presence: true, format: { with: /(\+375)(29|25|44|33)(\d{3})(\d{2})(\d{2})/,
-    message: "Использовать можно только цифры и код РБ" },
+    message: "Использовать можно только цифры и код РБ, а так же операторов МТС, А1, Лайф" },
     length: { is: 13, wrong_length: "Неверное количество цифр, водить только мобильный номер" },
     numericality: { only_integer: true },
     on: :update
   validates :street, presence: true, format: { with: /[А-Яа-яЁё]/,
-    message: "Использовать можно только буквы" },
+    message: "Использовать можно только кириллицу в названии улицы" },
     length: { in: 3..100,
       too_long: "Слишком много символов (максимальное количество: 40, ваше %{count}",
-      too_short: "Слишком мало символов, напишите полное имя"
+      too_short: "Слишком мало символов, напишите полное название улицы"
     },
     on: :update
   validates :house_number, presence: true,
