@@ -5,12 +5,12 @@
 %>
 
 <% while iter <= row_count do %>
-  
+
   <div class="line<%= iter%2 == 0 ? "" : "two" %>"></div>
-  
+
   <div class="pizzas">
     <div class="pizza_row<%= (iter == row_count) && !all_full_row ? "_two" : ""%>">
- 
+
       <% @pizzas.each do |pizza| %>
         <% if pizza.popularity == iter %>
           <div class="pizza_row_item <%= pizza.photo %>">
@@ -32,8 +32,9 @@
                     <h1><%= pizza.name %></h1>
                     <p>(<%= pizza.ingredients %>)</p>
                     <h3><%= pizza.price %> руб, <%= pizza.weight %>г.</h3>
-                    <% if OrderItem.where(order_id: @order_id, pizza_id: pizza.id).one? %>
-                      Пицца в корзине!
+                    <div class="pizza_row_item_button_id<%= pizza.id %>">
+                    <% if OrderItem.find_by(order_id: @order_id, pizza_id: pizza.id) %>
+                      <p>Пицца в корзине!</p>
                     <% else %>
                       <%= form_for(@order_item, remote: true) do |f| %>
                         <%= f.hidden_field :pizza_id, value: pizza.id %>
@@ -41,7 +42,7 @@
                         <%= f.submit "В корзину", class: 'submit_btn' %>
                       <% end %>
                     <% end %>
-                    <%# , add_to_cart_path(pizza.id), method: :post %>
+                    </div>
                 </div>
             </div>
           </div>

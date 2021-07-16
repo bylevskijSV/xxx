@@ -6,13 +6,13 @@
 
     <div class="delivery-content">
       <h1>Чтобы оформить Ваш заказ, заполните форму</h1>
-
+      <%= render 'errors' %>
       <div class="delivery-content-form">
         <%= form_with(model: @order, local: true) do |f| %>
           <p>Имя: *</p>
           <%= f.text_field :name %>
           <p>Контактный телефон: *</p>
-          <%= f.phone_field :phone %>
+          <%= f.phone_field :phone, value: '+375' %>
           <br>
           <div class="delivery-content-form-minsk">
             <h1>Адрес доставки в Минске</h1>
@@ -22,15 +22,15 @@
             <div class="delivery-content-form-minsk-homeaddress">
               <div>
                 <p>Номер дома: *</p>
-                <%= f.number_field :house_number %>
+                <%= f.number_field :house_number, min: 1, max: 200 %>
               </div>
               <div class="l">
                 <p>Номер корпуса:</p>
-                <%= f.number_field :subway_number %>
+                <%= f.number_field :subway_number,  min: 1, max: 200 %>
               </div>
               <div class="l">
                 <p>Номер квартиры:</p>
-                <%= f.number_field :apartment_number %>
+                <%= f.number_field :apartament_number, min: 1, max: 1000 %>
               </div>
             </div>
             <h2 class="delivery-content-form-minsk-homeaddress-note">Примечание (подъезд, этаж, доп. номер телефона):</h2>
