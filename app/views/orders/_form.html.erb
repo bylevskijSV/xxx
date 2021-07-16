@@ -18,6 +18,7 @@
             <h1>Адрес доставки в Минске</h1>
             <p>Улица: *</p>
             <%= f.text_field :street %>
+         
             <div class="delivery-content-form-minsk-homeaddress">
               <div>
                 <p>Номер дома: *</p>
@@ -33,8 +34,8 @@
               </div>
             </div>
             <h2 class="delivery-content-form-minsk-homeaddress-note">Примечание (подъезд, этаж, доп. номер телефона):</h2>
-            <%= f.text_area :note, cols: 30, rows: 10, style: "padding: 10px; margin-top: 10px"%>
-            <%= f.submit "Подтвердить заказ", class: "send-email" %>
+            <%= f.text_field :note, style: "padding: 10px; margin-top: 30px;" %>
+            <%= f.submit "Подтвердить заказ", class: "send-email", style: "margin-left: 15%; margin-top: 25px" %>
         <% end %>
       </div>
     </div>

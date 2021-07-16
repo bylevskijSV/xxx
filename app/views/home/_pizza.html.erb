@@ -37,8 +37,8 @@
                     <% else %>
                       <%= form_for(@order_item, remote: true) do |f| %>
                         <%= f.hidden_field :pizza_id, value: pizza.id %>
-                        <%= f.number_field :quantity, value: 1, min: 1%>
-                        <%= f.submit "Добавить в корзину", class: 'submit_btn' %>
+                        <%= f.hidden_field :quantity, value: 1, min: 1%>
+                        <%= f.submit "В корзину", class: 'submit_btn' %>
                       <% end %>
                     <% end %>
                     <%# , add_to_cart_path(pizza.id), method: :post %>

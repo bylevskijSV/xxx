@@ -1,1 +1,1 @@
-<%= link_to "#{current_order.order_items.size} товаров в корзине, итоговая цена: #{current_order.subtotal}", carts_path %>
+<div class="cart_link_div"><%= link_to "Товаров: #{current_order.order_items.size}, цена: #{current_order.subtotal} р.", carts_path, class: "cart_link" %> </div>
