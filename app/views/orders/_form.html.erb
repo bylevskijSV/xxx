@@ -6,7 +6,7 @@
 
     <div class="delivery-content">
       <h1>Чтобы оформить Ваш заказ, заполните форму</h1>
-
+      <%= render 'errors' %>
       <div class="delivery-content-form">
         <%= form_with(model: @order, local: true) do |f| %>
           <p>Имя: *</p>
