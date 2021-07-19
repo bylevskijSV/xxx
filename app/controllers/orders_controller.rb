@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   include OrdersHelper
+
   before_action :set_order, only: [:edit, :update]
+
   def edit
   end
 
@@ -12,9 +14,10 @@ class OrdersController < ApplicationController
       session[:order_id] = nil
       redirect_to root_path
     else
-      render 'edit'
+      render :edit, location: edit_order_path
     end
   end
+
   private
 
   def order_params
@@ -25,8 +28,4 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def set_confirmed_by
-    @order.confirmed_by = true
-    @order.save
-  end
 end
