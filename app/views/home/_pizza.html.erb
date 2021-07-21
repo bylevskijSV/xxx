@@ -33,7 +33,7 @@
                     <p>(<%= pizza.ingredients %>)</p>
                     <h3><%= pizza.price %> руб, <%= pizza.weight %>г.</h3>
                     <div class="pizza_row_item_button_id<%= pizza.id %>">
-                    <% if OrderItem.find_by(order_id: @order_id, pizza_id: pizza.id) %>
+                    <% if OrderItem.find_by(order_id: session[:order_id], pizza_id: pizza.id) %>
                       <p>Пицца в корзине!</p>
                     <% else %>
                       <%= form_for(@order_item, remote: true) do |f| %>

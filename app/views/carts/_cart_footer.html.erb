@@ -1,4 +1,4 @@
 <button><%= link_to "Перейти в меню", home_index_path %></button>
 <% if session[:order_id] && (@order_items.size > 0)  %>
-  <button><%= link_to "Оформить заказ", edit_order_path(@order_id) %></button>
+  <button><%= link_to "Оформить заказ", edit_order_path(session[:order_id]) %></button>
 <% end %>

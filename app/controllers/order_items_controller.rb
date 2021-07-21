@@ -1,11 +1,18 @@
 class OrderItemsController < ApplicationController
 
   def create
+    # v1
+    # @order_item = OrderItem.new(order_item_params)
+    # @order_item.order_id = current_order.id
+    # @order_item.save
+    # current_order.save validate: false
+    # session[:order_id] = @order.id
+
+    # v2
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
-    @order.save
+    @order.save(validate: false)
     session[:order_id] = @order.id
-    redirect_to home_index_path
   end
 
   def update

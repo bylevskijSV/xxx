@@ -42,7 +42,7 @@ class Order < ApplicationRecord
     order_items.collect{|order_item| order_item.valid? ? (order_item.unit_price * order_item.quantity) : 0}.sum
   end
 
-  def order_to_string
+  def order_to_s
     order_item_info = "Пиццы:\n"
 
     if !order_items.empty?
