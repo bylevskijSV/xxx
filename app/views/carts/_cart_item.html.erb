@@ -1,13 +1,5 @@
-<% if !@order_item.nil? && @order_item.errors.any? %>
-  <ul>
-  <% @order_item.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-  </ul>
-<% end %>
-
-<% if @order_items.size > 0 %>
-  <% @order_items.each do |item| %>
+<% if current_order.order_items.size > 0 %>
+  <% current_order.order_items.order(:created_at).each do |item| %>
     <div class="cart-item">
       <button><%= link_to 'Удалить', item, method: :delete, remote: true %></button>
       <%= image_tag(item.pizza.photo, size: "90x90", alt: item.pizza.name) %>
