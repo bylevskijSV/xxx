@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   include OrdersHelper
-
+  helper_method :order_total
   before_action :set_order, only: [:edit, :update]
 
   def edit
@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
       flash[:notice] = "Заказ успешно cформирован"
       set_confirmed_by
       send_order_to_telegram
-      session[:order_id] = nil
+      session.delete(:order_id)
       redirect_to root_path
     else
       render :edit, location: edit_order_path

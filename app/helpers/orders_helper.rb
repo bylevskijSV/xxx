@@ -45,7 +45,6 @@ module OrdersHelper
 
   def send_order_to_telegram
     message = set_order_data_collection
-    byebug
     chat_ids = Rails.configuration.chat_ids
     token = Rails.configuration.token
     # Если есть токен в переменной окружения отправить сообщение в телеграм-бот
@@ -57,5 +56,11 @@ module OrdersHelper
         Net::HTTP.get(uri)
       end
     end
+  end
+
+  def order_total
+    @order = current_order
+    @order.save(validate: false)
+    @order.total
   end
 end

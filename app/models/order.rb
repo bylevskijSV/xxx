@@ -26,10 +26,10 @@ class Order < ApplicationRecord
 
   # methods
   def total_price
-    order_items.collect{ |order_item| set_order_item(order_item) }.sum
+    order_items.collect{ |order_item| set_order_price_item(order_item) }.sum
   end
 
-  def set_order_item(order_item)
+  def set_order_price_item(order_item)
     order_item.valid? ? (order_item.unit_price * order_item.quantity) : 0
   end
 
