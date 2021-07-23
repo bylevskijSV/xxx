@@ -1,5 +1,5 @@
-<% if current_order.order_items.size > 0 %>
-  <% current_order.order_items.order(:created_at).each do |item| %>
+<% if order_items_size > 0 %>
+  <% cart_items.each do |item| %>
     <div class="cart-item">
       <button><%= link_to 'Удалить', item, method: :delete, remote: true %></button>
       <%= image_tag(item.pizza.photo, size: "90x90", alt: item.pizza.name) %>

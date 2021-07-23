@@ -13,6 +13,8 @@ module Xxx
     config.chat_ids = %w[126953160 ] # 1198808944 - Ilya
     config.token = ENV['TELEGRAM_TOKEN'] ||= false
     config.i18n.default_locale = :ru
+    
+    # config.assets.paths << "#{Rails.root}/app/assets/videos"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

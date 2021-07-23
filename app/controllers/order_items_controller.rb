@@ -1,9 +1,8 @@
 class OrderItemsController < ApplicationController
 
   def create
-    @order_item = OrderItem.create(order_item_params.merge(order_id: current_order.id))
+    @order_item = OrderItem.create(order_item_params.merge(order_id: session[:order_id]))
     current_order.save(validate: false)
-    session[:order_id] = current_order.id
   end
 
   def update
@@ -12,9 +11,8 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
-    current_order.order_items.destroy(OrderItem.find(params[:id]))
-    # @order_item = OrderItem.find(params[:id])
-    # @order_item.destroy
+    @order_item = OrderItem.find(params[:id])
+    @order_item.destroy
   end
 
   private

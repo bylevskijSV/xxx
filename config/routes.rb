@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # post 'pizzas/add_to_cart/:id', to: 'pizzas#add_to_cart', as: 'add_to_cart'
   # delete '/pizzas/remove_from_cart/:id', to: 'pizzas#remove_from_cart', as: 'remove_from_cart'
 
-  resources :home, only: [:index, :show]
-  resources :pizzas
+  resources :menu, only: [:index]
+  # resources :pizzas
   resource  :carts, only: [:show]
   resources :orders, only: [:edit, :update]
 

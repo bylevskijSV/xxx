@@ -3,8 +3,21 @@ module OrdersHelper
 
   def set_confirmed_by
     @order.confirmed_by = true
-    @order.total = current_order.total
     @order.save
+  end
+
+  def order_to_string
+    order_item_info = "Пиццы:\n"
+
+    if !@order.order_items.empty?
+      @order.order_items.each do |item|
+        order_item_info << "#{item.pizza.name}:#{item.quantity}\n"
+      end
+    else
+      ActiveModel::Error.new(Order, :order_to_string, :too_short, count: 1)
+    end
+
+    return order_item_info
   end
 
   def set_order_data_collection
@@ -23,7 +36,7 @@ module OrdersHelper
     end
     message << "-------------\n"
 
-    message << "#{current_order.order_to_string}"
+    message << "#{order_to_string}"
     message << "-------------\n"
     message << "За всё: #{@order.total} BYN"
 
