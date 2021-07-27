@@ -30,7 +30,7 @@ class Order < ApplicationRecord
   end
 
   def set_order_price_item(order_item)
-    order_item.valid? ? (order_item.unit_price * order_item.quantity) : 0
+    order_item.valid? ? order_item.total_price : 0
   end
 
   private

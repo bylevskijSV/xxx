@@ -1,0 +1,17 @@
+.errors-div {
+  width: 80%;
+  margin: 10px auto 0 auto;
+  border: 2px solid black;
+}
+.errors-div ul {
+  width: 50%;
+  text-align: left;
+  margin: 0 auto;
+}
+.field_with_errors {
+padding: 2px;
+background-color: red;
+display: flex;
+border-radius: 12px;
+width: 100%;
+}

@@ -59,8 +59,7 @@ module OrdersHelper
   end
 
   def order_total
-    @order = current_order
-    @order.save(validate: false)
-    @order.total
+    current_order.save(validate: false)
+    current_order.total
   end
 end

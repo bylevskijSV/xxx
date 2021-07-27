@@ -8,7 +8,6 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :subway_number
       t.integer :apartament_number
       t.string  :note
-      t.float   :subtotal
       t.float   :total
       t.float   :tax
       t.float   :shipping

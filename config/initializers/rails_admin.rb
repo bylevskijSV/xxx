@@ -1,5 +1,6 @@
 RailsAdmin.config do |config|
-
+  require 'i18n'
+  I18n.default_locale = :en
   ### Popular gems integration
 
   ## == Devise ==
@@ -24,7 +25,9 @@ RailsAdmin.config do |config|
   # config.show_gravatar = true
 
   config.actions do
-    dashboard                     # mandatory
+    dashboard do
+      i18n_key :en
+    end                    # mandatory
     index                         # mandatory
     new
     export
@@ -37,5 +40,12 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+  end
+
+  config.authenticate_with do
+    authenticate_or_request_with_http_basic('Login required') do |username, password|
+      user = User.where(name: username).first
+      user.authenticate(password) if user
+    end
   end
 end
