@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_07_26_110126) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "order_items", force: :cascade do |t|
     t.integer "pizza_id"
     t.integer "order_id"
@@ -36,8 +33,8 @@ ActiveRecord::Schema.define(version: 2021_07_26_110126) do
     t.float "total"
     t.float "tax"
     t.float "shipping"
-    t.boolean "confirmed_by"
-    t.boolean "closed"
+    t.boolean "confirmed_by", default: false
+    t.boolean "closed", default: false
     t.string "order_to_string"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
